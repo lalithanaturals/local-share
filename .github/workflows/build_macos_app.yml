@@ -8,10 +8,17 @@ permissions:
 
 jobs:
   build_macos:
-    runs-on: macos-15
+    runs-on: macos-26
 
     steps:
       - uses: actions/checkout@v6
+
+      - name: Use newest Xcode
+        run: |
+          ls -d /Applications/Xcode*.app
+          XC=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XC"
+          xcodebuild -version
 
       - name: Read Flutter version
         run: |
