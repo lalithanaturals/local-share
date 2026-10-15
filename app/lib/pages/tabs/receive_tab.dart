@@ -105,12 +105,16 @@ class _ReceiveTabState extends State<ReceiveTab> {
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: Center(
-                      child: OutlinedButton.icon(
+                      child: FilledButton.icon(
+                        style: FilledButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 18),
+                          textStyle: const TextStyle(fontSize: 18),
+                        ),
                         onPressed: () async {
                           await context.global.dispatchAsync(NavigateAction.push(const WebSharePage()));
                         },
-                        icon: Icon(Icons.language),
-                        label: Text(t.receiveTab.link),
+                        icon: const Icon(Icons.qr_code_2, size: 28),
+                        label: const Text('Show QR'),
                       ),
                     ),
                   ),

@@ -15,6 +15,7 @@ import 'package:localsend_app/widget/dialogs/zoom_dialog.dart';
 import 'package:localsend_app/widget/responsive_list_view.dart';
 import 'package:localsend_isolates/util/sleep.dart';
 import 'package:logging/logging.dart';
+import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:refena_flutter/refena_flutter.dart';
 import 'package:routerino/routerino.dart';
 
@@ -42,6 +43,9 @@ class _WebSharePageState extends State<WebSharePage> with Refena {
   _ServerState _stateEnum = _ServerState.initializing;
   bool _encrypted = false;
   String? _initializedError;
+
+  /// Index of the IP address shown in the big QR code (receive mode).
+  int _qrIpIndex = 0;
 
   bool get _sendMode => widget.files != null;
 
@@ -182,6 +186,17 @@ class _WebSharePageState extends State<WebSharePage> with Refena {
             return ResponsiveListView(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               children: [
+                if (!_sendMode && networkState.localIps.isNotEmpty) ...[
+                  _PhoneQrCard(
+                    ips: networkState.localIps,
+                    selectedIndex: _qrIpIndex.clamp(0, networkState.localIps.length - 1),
+                    encrypted: _encrypted,
+                    port: serverState.port,
+                    pin: pin,
+                    onSelect: (index) => setState(() => _qrIpIndex = index),
+                  ),
+                  const SizedBox(height: 20),
+                ],
                 Text(t.webSharePage.openLink(n: networkState.localIps.length), style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 10),
                 Card(
@@ -400,6 +415,94 @@ class _WebSharePageState extends State<WebSharePage> with Refena {
               ],
             );
           },
+        ),
+      ),
+    );
+  }
+}
+
+/// A large QR code that a phone camera can scan to open the upload page.
+class _PhoneQrCard extends StatelessWidget {
+  final List<String> ips;
+  final int selectedIndex;
+  final bool encrypted;
+  final int port;
+  final String? pin;
+  final ValueChanged<int> onSelect;
+
+  const _PhoneQrCard({
+    required this.ips,
+    required this.selectedIndex,
+    required this.encrypted,
+    required this.port,
+    required this.pin,
+    required this.onSelect,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final ip = ips[selectedIndex];
+    final url = '${encrypted ? 'https' : 'http'}://$ip:$port';
+    final qrData = switch (pin) {
+      final String p => '$url/?pin=${Uri.encodeQueryComponent(p)}',
+      null => url,
+    };
+
+    return Card(
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            const Text(
+              'Scan with your phone camera',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 15),
+            SizedBox(
+              width: 260,
+              height: 260,
+              child: PrettyQrView.data(
+                errorCorrectLevel: QrErrorCorrectLevel.Q,
+                data: qrData,
+                decoration: const PrettyQrDecoration(
+                  shape: PrettyQrSmoothSymbol(
+                    roundFactor: 0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 15),
+            SelectableText(
+              url,
+              style: const TextStyle(fontSize: 16, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 5),
+            const Text(
+              'Your phone and this device must be on the same Wi-Fi.',
+              style: TextStyle(color: Colors.black54),
+              textAlign: TextAlign.center,
+            ),
+            if (ips.length > 1) ...[
+              const SizedBox(height: 10),
+              Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  for (var i = 0; i < ips.length; i++)
+                    ChoiceChip(
+                      label: Text(ips[i]),
+                      selected: i == selectedIndex,
+                      onSelected: (_) => onSelect(i),
+                    ),
+                ],
+              ),
+            ],
+          ],
         ),
       ),
     );
