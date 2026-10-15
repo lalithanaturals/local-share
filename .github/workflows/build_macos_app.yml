@@ -46,7 +46,7 @@ jobs:
           ditto -c -k --keepParent "Lalitha Local Share.app" "$GITHUB_WORKSPACE/Lalitha-Local-Share-macOS.zip"
 
       - name: Upload app
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: Lalitha-Local-Share-macOS
           path: Lalitha-Local-Share-macOS.zip
