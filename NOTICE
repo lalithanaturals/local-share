@@ -1,0 +1,20 @@
+Lalitha Local Share
+Copyright 2026 Lalitha
+
+This product is a modified version of LocalSend
+(https://github.com/localsend/localsend),
+Copyright 2022-2026 Tien Do Nam and contributors,
+licensed under the Apache License, Version 2.0.
+
+Changes made from the original LocalSend source:
+- Renamed the app to "Lalitha Local Share" in the user interface,
+  translations, window titles, installers and packaging files.
+- Changed application identifiers (Android, iOS, macOS, Linux, Windows
+  installer and MSIX identity) so the app installs separately from LocalSend.
+- Replaced the LocalSend logo and all app icons with the Lalitha logo.
+- Changed the default theme colour to the Lalitha brand red.
+- Removed the LocalSend donation page link, privacy-policy link and
+  release/signing CI workflows that depend on LocalSend's accounts.
+
+"LocalSend" and the LocalSend logo belong to their respective owners.
+Lalitha Local Share is not affiliated with or endorsed by the LocalSend project.
