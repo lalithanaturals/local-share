@@ -93,7 +93,7 @@ BEGIN
             VALUE "FileDescription", "Lalitha Local Share" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "localsend_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022-2026 Tien Do Nam; modifications (C) 2026 Lalitha" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022-2026 Tien Do Nam; modifications 2026 Lalitha" "\0"
             VALUE "OriginalFilename", "localsend_app.exe" "\0"
             VALUE "ProductName", "Lalitha Local Share" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
