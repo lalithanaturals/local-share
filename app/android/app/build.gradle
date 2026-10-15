@@ -67,7 +67,9 @@ android {
 
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            // Use the release key when key.properties exists, otherwise fall back to the
+            // debug key so test builds can still be installed.
+            signingConfig rootProject.file('key.properties').exists() ? signingConfigs.release : signingConfigs.debug
         }
         debug {
             applicationIdSuffix ".debug"

@@ -1,0 +1,52 @@
+name: Build macOS app (unsigned)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_macos:
+    runs-on: macos-15
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Read Flutter version
+        run: |
+          echo "FLUTTER_VERSION=$(sed -n 's/.*"flutter": "\(.*\)".*/\1/p' .fvmrc)" >> $GITHUB_ENV
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: "stable"
+
+      - name: Install Rust
+        working-directory: packages/localsend_isolates
+        run: |
+          rustup show
+          rustup target add aarch64-apple-darwin x86_64-apple-darwin
+
+      - name: Dependencies
+        working-directory: app
+        run: flutter pub get
+
+      - name: Build macOS app
+        working-directory: app
+        env:
+          FLUTTER_XCODE_CODE_SIGN_IDENTITY: "-"
+          FLUTTER_XCODE_CODE_SIGN_STYLE: Manual
+          FLUTTER_XCODE_DEVELOPMENT_TEAM: ""
+          FLUTTER_XCODE_PROVISIONING_PROFILE_SPECIFIER: ""
+        run: flutter build macos --release
+
+      - name: Sign locally and zip
+        working-directory: app/build/macos/Build/Products/Release
+        run: |
+          ls
+          codesign --force --deep --preserve-metadata=entitlements --sign - "Lalitha Local Share.app"
+          ditto -c -k --keepParent "Lalitha Local Share.app" "$GITHUB_WORKSPACE/Lalitha-Local-Share-macOS.zip"
+
+      - name: Upload app
+        uses: actions/upload-artifact@v6
+        with:
+          name: Lalitha-Local-Share-macOS
+          path: Lalitha-Local-Share-macOS.zip
