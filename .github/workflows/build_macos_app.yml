@@ -3,6 +3,9 @@ name: Build macOS app (unsigned)
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build_macos:
     runs-on: macos-15
@@ -36,7 +39,9 @@ jobs:
           FLUTTER_XCODE_CODE_SIGN_STYLE: Manual
           FLUTTER_XCODE_DEVELOPMENT_TEAM: ""
           FLUTTER_XCODE_PROVISIONING_PROFILE_SPECIFIER: ""
-        run: flutter build macos --release
+        run: |
+          set -o pipefail
+          flutter build macos --release 2>&1 | tee "$RUNNER_TEMP/build.log"
 
       - name: Sign locally and zip
         working-directory: app/build/macos/Build/Products/Release
@@ -50,3 +55,15 @@ jobs:
         with:
           name: Lalitha-Local-Share-macOS
           path: Lalitha-Local-Share-macOS.zip
+
+      - name: Save build log on failure
+        if: failure()
+        run: |
+          mkdir -p /tmp/logs && cp "$RUNNER_TEMP/build.log" /tmp/logs/ 2>/dev/null || echo "no log" > /tmp/logs/build.log
+          grep -n -i "error" /tmp/logs/build.log | head -100 > /tmp/logs/errors.txt || true
+          git config user.name "build-bot"; git config user.email "build-bot@users.noreply.github.com"
+          git checkout --orphan build-logs
+          git rm -rf --cached . > /dev/null
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp /tmp/logs/* .
+          git add -A && git commit -m "macOS build log" && git push -f origin build-logs
