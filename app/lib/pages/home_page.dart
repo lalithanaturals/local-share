@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage> with Refena {
                               SizedBox(height: 20),
                               Text(
                                 'Lalitha Local Share',
-                                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.center,
                               ),
                               SizedBox(height: 20),
