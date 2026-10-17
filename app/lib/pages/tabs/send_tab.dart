@@ -167,6 +167,21 @@ class SendTab extends StatelessWidget {
                 ),
               ),
             ],
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Center(
+                child: FilledButton.icon(
+                  style: FilledButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 18),
+                    textStyle: const TextStyle(fontSize: 18),
+                  ),
+                  // Picks files first if none are selected, then shows the QR code for phones.
+                  onPressed: () async => vm.onTapSendMode(context, SendMode.link),
+                  icon: const Icon(Icons.qr_code_2, size: 28),
+                  label: const Text('Send via QR'),
+                ),
+              ),
+            ),
             Row(
               children: [
                 const SizedBox(width: _horizontalPadding),
