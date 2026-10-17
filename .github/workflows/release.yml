@@ -17,7 +17,7 @@ jobs:
     outputs:
       version: ${{ steps.get_version.outputs.version }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Read version from pubspec.yaml
         id: get_version
         run: |
@@ -50,7 +50,7 @@ jobs:
     needs: [version, android, windows, macos]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: actions/download-artifact@v4
         with:
