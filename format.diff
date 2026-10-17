@@ -1,0 +1,404 @@
+diff --git a/app/lib/gen/strings_ar.g.dart b/app/lib/gen/strings_ar.g.dart
+index 3c0cc0d..55d517b 100644
+--- a/app/lib/gen/strings_ar.g.dart
++++ b/app/lib/gen/strings_ar.g.dart
+@@ -1412,7 +1412,8 @@ class _Translations$dialogs$localNetworkUnauthorized$ar extends Translations$dia
+   @override
+   String get title => _root.dialogs.noPermission.title;
+   @override
+-  String get description => 'لا يمكن ل Lalitha Local Share العثور على الأجهزة الأخرى بدون الإذن بفحص الشبكة المحلية. يُرجى منح هذا الإذن في الإعدادات.';
++  String get description =>
++      'لا يمكن ل Lalitha Local Share العثور على الأجهزة الأخرى بدون الإذن بفحص الشبكة المحلية. يُرجى منح هذا الإذن في الإعدادات.';
+   @override
+   String get gotoSettings => 'الإعدادات';
+ }
+diff --git a/app/lib/gen/strings_be.g.dart b/app/lib/gen/strings_be.g.dart
+index 24580aa..2dfcc3b 100644
+--- a/app/lib/gen/strings_be.g.dart
++++ b/app/lib/gen/strings_be.g.dart
+@@ -1324,7 +1324,8 @@ class _Translations$dialogs$localNetworkUnauthorized$be extends Translations$dia
+   @override
+   String get title => _root.dialogs.noPermission.title;
+   @override
+-  String get description => 'Lalitha Local Share не можа знайсці іншыя прылады, не маючы дазволу на сканіраванне лакальнай сеткі. Дайце гэты дазвол у наладах.';
++  String get description =>
++      'Lalitha Local Share не можа знайсці іншыя прылады, не маючы дазволу на сканіраванне лакальнай сеткі. Дайце гэты дазвол у наладах.';
+   @override
+   String get gotoSettings => 'Налады';
+ }
+diff --git a/app/lib/gen/strings_bg.g.dart b/app/lib/gen/strings_bg.g.dart
+index 90ebb82..b786934 100644
+--- a/app/lib/gen/strings_bg.g.dart
++++ b/app/lib/gen/strings_bg.g.dart
+@@ -1473,7 +1473,8 @@ class _Translations$dialogs$sendModeHelp$bg extends Translations$dialogs$sendMod
+   @override
+   String get multiple => 'Изпраща файлове до множество получатели. Изборът няма да бъде изчистен след приключване на прехвърлянето на файлове.';
+   @override
+-  String get link => 'Получателите, които нямат инсталиран Lalitha Local Share, могат да изтеглят избраните файлове, като отворят връзката в своя браузър.';
++  String get link =>
++      'Получателите, които нямат инсталиран Lalitha Local Share, могат да изтеглят избраните файлове, като отворят връзката в своя браузър.';
+ }
+ 
+ // Path: dialogs.zoom
+diff --git a/app/lib/gen/strings_bn.g.dart b/app/lib/gen/strings_bn.g.dart
+index d804e8a..f4f3119 100644
+--- a/app/lib/gen/strings_bn.g.dart
++++ b/app/lib/gen/strings_bn.g.dart
+@@ -1413,7 +1413,8 @@ class _Translations$dialogs$localNetworkUnauthorized$bn extends Translations$dia
+   @override
+   String get title => _root.dialogs.noPermission.title;
+   @override
+-  String get description => 'লোকাল নেটওয়ার্ক স্ক্যান করার পারমিশন ছাড়া Lalitha Local Share অন্য ডিভাইস খুঁজে পায় না। অনুগ্রহ করে সেটিংসে এই পারমিশনটি দিন।';
++  String get description =>
++      'লোকাল নেটওয়ার্ক স্ক্যান করার পারমিশন ছাড়া Lalitha Local Share অন্য ডিভাইস খুঁজে পায় না। অনুগ্রহ করে সেটিংসে এই পারমিশনটি দিন।';
+   @override
+   String get gotoSettings => 'সেটিংস';
+ }
+diff --git a/app/lib/gen/strings_cs.g.dart b/app/lib/gen/strings_cs.g.dart
+index 4824ce6..0a1d8d7 100644
+--- a/app/lib/gen/strings_cs.g.dart
++++ b/app/lib/gen/strings_cs.g.dart
+@@ -1470,7 +1470,8 @@ class _Translations$dialogs$sendModeHelp$cs extends Translations$dialogs$sendMod
+   @override
+   String get multiple => 'Odešle soubory více příjemcům. Výběr nebude vymazán.';
+   @override
+-  String get link => 'Příjemci, kteří nemají nainstalovaný Lalitha Local Share, si mohou vybrané soubory stáhnout otevřením odkazu ve svém prohlížeči.';
++  String get link =>
++      'Příjemci, kteří nemají nainstalovaný Lalitha Local Share, si mohou vybrané soubory stáhnout otevřením odkazu ve svém prohlížeči.';
+ }
+ 
+ // Path: dialogs.zoom
+diff --git a/app/lib/gen/strings_da.g.dart b/app/lib/gen/strings_da.g.dart
+index 2b88522..e138bdc 100644
+--- a/app/lib/gen/strings_da.g.dart
++++ b/app/lib/gen/strings_da.g.dart
+@@ -543,7 +543,8 @@ class _Translations$donationPage$da extends Translations$donationPage$en {
+   @override
+   String get title => 'Donér';
+   @override
+-  String get info => 'Lalitha Local Share er gratis, open source og uden annoncer. Hvis du kan lide appen, kan du støtte udviklingen med en donation.';
++  String get info =>
++      'Lalitha Local Share er gratis, open source og uden annoncer. Hvis du kan lide appen, kan du støtte udviklingen med en donation.';
+   @override
+   String donate({required Object amount}) => 'Donér ${amount}';
+   @override
+diff --git a/app/lib/gen/strings_el.g.dart b/app/lib/gen/strings_el.g.dart
+index e2f81cc..ed45a45 100644
+--- a/app/lib/gen/strings_el.g.dart
++++ b/app/lib/gen/strings_el.g.dart
+@@ -496,7 +496,8 @@ class _Translations$webSharePage$el extends Translations$webSharePage$en {
+   @override
+   String pinHint({required Object pin}) => 'Το PIN είναι "${pin}"';
+   @override
+-  String get encryptionHint => 'Το Lalitha Local Share χρησιμοποιεί αυτο-υπογεγραμμένο πιστοποιητικό. Χρειάζεται να το αποθεχτείτε στον φυλλομετρητή.';
++  String get encryptionHint =>
++      'Το Lalitha Local Share χρησιμοποιεί αυτο-υπογεγραμμένο πιστοποιητικό. Χρειάζεται να το αποθεχτείτε στον φυλλομετρητή.';
+   @override
+   String pendingRequests({required Object n}) => 'Αναμονή αιτημάτων: ${n}';
+ }
+diff --git a/app/lib/gen/strings_en.g.dart b/app/lib/gen/strings_en.g.dart
+index 965718f..24f6d04 100644
+--- a/app/lib/gen/strings_en.g.dart
++++ b/app/lib/gen/strings_en.g.dart
+@@ -628,7 +628,8 @@ class Translations$donationPage$en {
+   String get title => 'Donate';
+ 
+   /// en: 'Lalitha Local Share is free, open-source and without any ads. If you like the app, you can support the development with a donation.'
+-  String get info => 'Lalitha Local Share is free, open-source and without any ads. If you like the app, you can support the development with a donation.';
++  String get info =>
++      'Lalitha Local Share is free, open-source and without any ads. If you like the app, you can support the development with a donation.';
+ 
+   /// en: 'Donate {amount}'
+   String donate({required Object amount}) => 'Donate ${amount}';
+diff --git a/app/lib/gen/strings_en_IN.g.dart b/app/lib/gen/strings_en_IN.g.dart
+index 32978c0..3fd279d 100644
+--- a/app/lib/gen/strings_en_IN.g.dart
++++ b/app/lib/gen/strings_en_IN.g.dart
+@@ -484,7 +484,8 @@ class _Translations$donationPage$en_IN extends Translations$donationPage$en {
+   @override
+   String get title => 'Donate';
+   @override
+-  String get info => 'Lalitha Local Share is free, open-source and without any ads. If you like the app, you can support the development with a donation.';
++  String get info =>
++      'Lalitha Local Share is free, open-source and without any ads. If you like the app, you can support the development with a donation.';
+   @override
+   String donate({required Object amount}) => 'Donate ${amount}';
+   @override
+diff --git a/app/lib/gen/strings_et.g.dart b/app/lib/gen/strings_et.g.dart
+index 7e9bc4e..52a7dfe 100644
+--- a/app/lib/gen/strings_et.g.dart
++++ b/app/lib/gen/strings_et.g.dart
+@@ -493,7 +493,8 @@ class _Translations$webSharePage$et extends Translations$webSharePage$en {
+   @override
+   String pinHint({required Object pin}) => 'PIN-kood on „${pin}“';
+   @override
+-  String get encryptionHint => 'Lalitha Local Share kasutab enda poolt allkirjastatud sertifikaate. Ühenduse toimimiseks palun nõustu nendega veebibrauseris.';
++  String get encryptionHint =>
++      'Lalitha Local Share kasutab enda poolt allkirjastatud sertifikaate. Ühenduse toimimiseks palun nõustu nendega veebibrauseris.';
+   @override
+   String pendingRequests({required Object n}) => 'Ootel päringuid: ${n}';
+ }
+diff --git a/app/lib/gen/strings_fi.g.dart b/app/lib/gen/strings_fi.g.dart
+index 340d459..990dc54 100644
+--- a/app/lib/gen/strings_fi.g.dart
++++ b/app/lib/gen/strings_fi.g.dart
+@@ -1563,7 +1563,8 @@ class _Translations$dialogs$sendModeHelp$fi extends Translations$dialogs$sendMod
+   @override
+   String get multiple => 'Lähettää tiedostoja useille vastaanottajille. Valinta ei tyhjene.';
+   @override
+-  String get link => 'Vastaanottajat, joilla ei ole Lalitha Local Shareia asennettuna, voivat ladata valitut tiedostot avaamalla linkin selaimessaan.';
++  String get link =>
++      'Vastaanottajat, joilla ei ole Lalitha Local Shareia asennettuna, voivat ladata valitut tiedostot avaamalla linkin selaimessaan.';
+ }
+ 
+ // Path: dialogs.zoom
+diff --git a/app/lib/gen/strings_he.g.dart b/app/lib/gen/strings_he.g.dart
+index ebf0e4a..5f927cc 100644
+--- a/app/lib/gen/strings_he.g.dart
++++ b/app/lib/gen/strings_he.g.dart
+@@ -543,7 +543,8 @@ class _Translations$donationPage$he extends Translations$donationPage$en {
+   @override
+   String get title => 'תרומה';
+   @override
+-  String get info => 'אפליקציית Lalitha Local Share היא חינמית, קוד פתוח וללא פרסומות. אם אתה אוהב את האפליקציה, אתה יכול לתמוך בפיתוח באמצעות תרומה.';
++  String get info =>
++      'אפליקציית Lalitha Local Share היא חינמית, קוד פתוח וללא פרסומות. אם אתה אוהב את האפליקציה, אתה יכול לתמוך בפיתוח באמצעות תרומה.';
+   @override
+   String donate({required Object amount}) => 'תרומת ${amount}';
+   @override
+diff --git a/app/lib/gen/strings_hi.g.dart b/app/lib/gen/strings_hi.g.dart
+index 47b106c..7339112 100644
+--- a/app/lib/gen/strings_hi.g.dart
++++ b/app/lib/gen/strings_hi.g.dart
+@@ -545,7 +545,8 @@ class _Translations$donationPage$hi extends Translations$donationPage$en {
+   @override
+   String get title => 'दान करें';
+   @override
+-  String get info => 'Lalitha Local Share मुफ्त, ओपन-सोर्स और बिना किसी विज्ञापन के है। यदि आपको ऐप पसंद है, तो आप विकास का समर्थन दान करके कर सकते हैं।';
++  String get info =>
++      'Lalitha Local Share मुफ्त, ओपन-सोर्स और बिना किसी विज्ञापन के है। यदि आपको ऐप पसंद है, तो आप विकास का समर्थन दान करके कर सकते हैं।';
+   @override
+   String donate({required Object amount}) => 'दान करें ${amount}';
+   @override
+@@ -1556,7 +1557,8 @@ class _Translations$dialogs$sendModeHelp$hi extends Translations$dialogs$sendMod
+   @override
+   String get multiple => 'कई प्राप्तकर्ताओं को फ़ाइलें भेजता है। चयन हटाया नहीं जाएगा।';
+   @override
+-  String get link => 'जिन प्राप्तकर्ताओं के पास Lalitha Local Share इंस्टॉल नहीं है, वे अपने ब्राउज़र में लिंक खोलकर चयनित फ़ाइलें डाउनलोड कर सकते हैं।';
++  String get link =>
++      'जिन प्राप्तकर्ताओं के पास Lalitha Local Share इंस्टॉल नहीं है, वे अपने ब्राउज़र में लिंक खोलकर चयनित फ़ाइलें डाउनलोड कर सकते हैं।';
+ }
+ 
+ // Path: dialogs.zoom
+diff --git a/app/lib/gen/strings_it.g.dart b/app/lib/gen/strings_it.g.dart
+index 7893482..003466e 100644
+--- a/app/lib/gen/strings_it.g.dart
++++ b/app/lib/gen/strings_it.g.dart
+@@ -1473,7 +1473,8 @@ class _Translations$dialogs$sendModeHelp$it extends Translations$dialogs$sendMod
+   @override
+   String get multiple => 'Invia file a più destinatari. Gli elementi non saranno deselezionati dopo il trasferimento dei file.';
+   @override
+-  String get link => 'I destinatari che non hanno installato Lalitha Local Share possono scaricare i file selezionati aprendo il link nel loro browser.';
++  String get link =>
++      'I destinatari che non hanno installato Lalitha Local Share possono scaricare i file selezionati aprendo il link nel loro browser.';
+ }
+ 
+ // Path: dialogs.zoom
+diff --git a/app/lib/gen/strings_ko.g.dart b/app/lib/gen/strings_ko.g.dart
+index f420ed1..1b5c8ec 100644
+--- a/app/lib/gen/strings_ko.g.dart
++++ b/app/lib/gen/strings_ko.g.dart
+@@ -288,7 +288,8 @@ class _Translations$networkInterfacesPage$ko extends Translations$networkInterfa
+   @override
+   String get title => '네트워크 인터페이스';
+   @override
+-  String get info => '기본적으로 Lalitha Local Share는 활용할 수 있는 모든 네트워크 인터페이스를 사용하도록 되어 있습니다. 원하지 않는 네트워크가 있다면 이 곳에서 비활성화할 수 있습니다. 변경사항을 적용하려면 서버를 다시 시작해야 합니다.';
++  String get info =>
++      '기본적으로 Lalitha Local Share는 활용할 수 있는 모든 네트워크 인터페이스를 사용하도록 되어 있습니다. 원하지 않는 네트워크가 있다면 이 곳에서 비활성화할 수 있습니다. 변경사항을 적용하려면 서버를 다시 시작해야 합니다.';
+   @override
+   String get preview => '미리보기';
+   @override
+diff --git a/app/lib/gen/strings_lo.g.dart b/app/lib/gen/strings_lo.g.dart
+index 3ad989a..dee5bc7 100644
+--- a/app/lib/gen/strings_lo.g.dart
++++ b/app/lib/gen/strings_lo.g.dart
+@@ -1408,7 +1408,8 @@ class _Translations$dialogs$localNetworkUnauthorized$lo extends Translations$dia
+   @override
+   String get title => _root.dialogs.noPermission.title;
+   @override
+-  String get description => 'Lalitha Local Share ບໍ່ສາມາດຄົ້ນຫາອຸປະກອນອື່ນໄດ້ ຫາກບໍ່ໄດ້ຮັບອະນຸຍາດໃຫ້ສະແກນເຄືອຂ່າຍທ້ອງຖິ່ນ. ກະລຸນາອະນຸຍາດສິດນີ້ໃນການຕັ້ງຄ່າ.';
++  String get description =>
++      'Lalitha Local Share ບໍ່ສາມາດຄົ້ນຫາອຸປະກອນອື່ນໄດ້ ຫາກບໍ່ໄດ້ຮັບອະນຸຍາດໃຫ້ສະແກນເຄືອຂ່າຍທ້ອງຖິ່ນ. ກະລຸນາອະນຸຍາດສິດນີ້ໃນການຕັ້ງຄ່າ.';
+   @override
+   String get gotoSettings => 'ການຕັ້ງຄ່າ';
+ }
+diff --git a/app/lib/gen/strings_nl.g.dart b/app/lib/gen/strings_nl.g.dart
+index 3e92eab..e19adbd 100644
+--- a/app/lib/gen/strings_nl.g.dart
++++ b/app/lib/gen/strings_nl.g.dart
+@@ -1474,7 +1474,8 @@ class _Translations$dialogs$sendModeHelp$nl extends Translations$dialogs$sendMod
+   @override
+   String get multiple => 'Bestanden naar meerdere ontvangers verzenden. De selectie blijft na de bestandsoverdracht behouden.';
+   @override
+-  String get link => 'Ontvangers die Lalitha Local Share niet hebben geïnstalleerd kunnen de bestanden downloaden door de link in hun browser te openen.';
++  String get link =>
++      'Ontvangers die Lalitha Local Share niet hebben geïnstalleerd kunnen de bestanden downloaden door de link in hun browser te openen.';
+ }
+ 
+ // Path: dialogs.zoom
+diff --git a/app/lib/gen/strings_pl.g.dart b/app/lib/gen/strings_pl.g.dart
+index cb5b2ed..a3a978e 100644
+--- a/app/lib/gen/strings_pl.g.dart
++++ b/app/lib/gen/strings_pl.g.dart
+@@ -1471,7 +1471,8 @@ class _Translations$dialogs$sendModeHelp$pl extends Translations$dialogs$sendMod
+   @override
+   String get multiple => 'Wysyła pliki do wielu odbiorców. Wybór nie zostanie wyczyszczony.';
+   @override
+-  String get link => 'Odbiorcy, którzy nie mają zainstalowanego Lalitha Local Share, mogą pobrać wybrane pliki, otwierając link w swojej przeglądarce.';
++  String get link =>
++      'Odbiorcy, którzy nie mają zainstalowanego Lalitha Local Share, mogą pobrać wybrane pliki, otwierając link w swojej przeglądarce.';
+ }
+ 
+ // Path: dialogs.zoom
+diff --git a/app/lib/gen/strings_ro.g.dart b/app/lib/gen/strings_ro.g.dart
+index a40cfd4..e50cf35 100644
+--- a/app/lib/gen/strings_ro.g.dart
++++ b/app/lib/gen/strings_ro.g.dart
+@@ -545,7 +545,8 @@ class _Translations$donationPage$ro extends Translations$donationPage$en {
+   @override
+   String get title => 'Donează';
+   @override
+-  String get info => 'Lalitha Local Share este gratuit, open-source și fără reclame. Dacă îți place aplicația, poți susține dezvoltarea cu o donație.';
++  String get info =>
++      'Lalitha Local Share este gratuit, open-source și fără reclame. Dacă îți place aplicația, poți susține dezvoltarea cu o donație.';
+   @override
+   String donate({required Object amount}) => 'Donează ${amount}';
+   @override
+@@ -1554,7 +1555,8 @@ class _Translations$dialogs$sendModeHelp$ro extends Translations$dialogs$sendMod
+   @override
+   String get multiple => 'Trimite fișiere la mai mulți destinatari. Selecția nu va fi ștearsă după transferul de fișiere terminate.';
+   @override
+-  String get link => 'Destinatarii care nu au Lalitha Local Share instalat pot descărca fișierele selectate prin deschiderea linkului în browserul lor.';
++  String get link =>
++      'Destinatarii care nu au Lalitha Local Share instalat pot descărca fișierele selectate prin deschiderea linkului în browserul lor.';
+ }
+ 
+ // Path: dialogs.zoom
+diff --git a/app/lib/gen/strings_sk.g.dart b/app/lib/gen/strings_sk.g.dart
+index 8ff9cca..04153d0 100644
+--- a/app/lib/gen/strings_sk.g.dart
++++ b/app/lib/gen/strings_sk.g.dart
+@@ -1555,7 +1555,8 @@ class _Translations$dialogs$sendModeHelp$sk extends Translations$dialogs$sendMod
+   @override
+   String get multiple => 'Posiela súbory viacerým príjemcom. Výber sa vymaže po dokončení prenosu súborov.';
+   @override
+-  String get link => 'Príjemcovia, ktorí nemajú nainštalovaný Lalitha Local Share, si môžu stiahnuť vybrané súbory otvorením odkazu vo svojom prehliadači.';
++  String get link =>
++      'Príjemcovia, ktorí nemajú nainštalovaný Lalitha Local Share, si môžu stiahnuť vybrané súbory otvorením odkazu vo svojom prehliadači.';
+ }
+ 
+ // Path: dialogs.zoom
+diff --git a/app/lib/gen/strings_sr.g.dart b/app/lib/gen/strings_sr.g.dart
+index f397f50..cf9043c 100644
+--- a/app/lib/gen/strings_sr.g.dart
++++ b/app/lib/gen/strings_sr.g.dart
+@@ -545,7 +545,8 @@ class Translations$donationPage$sr extends Translations$donationPage$en {
+   @override
+   String get title => 'Donacija';
+   @override
+-  String get info => 'Lalitha Local Share je besplatan, otvorenog koda i bez ikakvih oglasa. Ako vam se sviđa aplikacija, možete podržati razvoj donacijom.';
++  String get info =>
++      'Lalitha Local Share je besplatan, otvorenog koda i bez ikakvih oglasa. Ako vam se sviđa aplikacija, možete podržati razvoj donacijom.';
+   @override
+   String donate({required Object amount}) => 'Doniraj ${amount}';
+   @override
+@@ -1419,7 +1420,8 @@ class Translations$dialogs$localNetworkUnauthorized$sr extends Translations$dial
+   @override
+   String get title => _root.dialogs.noPermission.title;
+   @override
+-  String get description => 'Lalitha Local Share ne može da pronađe druge uređaje bez dozvole za skeniranje lokalne mreže. Dajte ovu dozvolu u podešavanjima.';
++  String get description =>
++      'Lalitha Local Share ne može da pronađe druge uređaje bez dozvole za skeniranje lokalne mreže. Dajte ovu dozvolu u podešavanjima.';
+   @override
+   String get gotoSettings => 'Podešavanja';
+ }
+diff --git a/app/lib/gen/strings_sr_Cyrl.g.dart b/app/lib/gen/strings_sr_Cyrl.g.dart
+index 411d86c..3c41a9f 100644
+--- a/app/lib/gen/strings_sr_Cyrl.g.dart
++++ b/app/lib/gen/strings_sr_Cyrl.g.dart
+@@ -546,7 +546,8 @@ class _Translations$donationPage$sr_Cyrl extends Translations$donationPage$sr {
+   @override
+   String get title => 'Донација';
+   @override
+-  String get info => 'Lalitha Local Share је бесплатан, отвореног кода и без икаквих огласа. Ако вам се свиђа апликација, можете подржати развој донацијом.';
++  String get info =>
++      'Lalitha Local Share је бесплатан, отвореног кода и без икаквих огласа. Ако вам се свиђа апликација, можете подржати развој донацијом.';
+   @override
+   String donate({required Object amount}) => 'Донирај ${amount}';
+   @override
+@@ -1421,7 +1422,8 @@ class _Translations$dialogs$localNetworkUnauthorized$sr_Cyrl extends Translation
+   @override
+   String get title => _root.dialogs.noPermission.title;
+   @override
+-  String get description => 'Lalitha Local Share не може да пронађе друге уређаје без дозволе за скенирање локалне мреже. Дајте ову дозволу у подешавањима.';
++  String get description =>
++      'Lalitha Local Share не може да пронађе друге уређаје без дозволе за скенирање локалне мреже. Дајте ову дозволу у подешавањима.';
+   @override
+   String get gotoSettings => 'Подешавања';
+ }
+diff --git a/app/lib/gen/strings_sv.g.dart b/app/lib/gen/strings_sv.g.dart
+index 09fd870..fd18cd0 100644
+--- a/app/lib/gen/strings_sv.g.dart
++++ b/app/lib/gen/strings_sv.g.dart
+@@ -545,7 +545,8 @@ class _Translations$donationPage$sv extends Translations$donationPage$en {
+   @override
+   String get title => 'Donera';
+   @override
+-  String get info => 'Lalitha Local Share är en fri app med öppen källkod och utan annonser. Om du gillar appen kan du stödja utvecklingen genom att donera.';
++  String get info =>
++      'Lalitha Local Share är en fri app med öppen källkod och utan annonser. Om du gillar appen kan du stödja utvecklingen genom att donera.';
+   @override
+   String donate({required Object amount}) => 'Donera ${amount}';
+   @override
+diff --git a/app/lib/gen/strings_ta.g.dart b/app/lib/gen/strings_ta.g.dart
+index dfd6f2a..0161c3a 100644
+--- a/app/lib/gen/strings_ta.g.dart
++++ b/app/lib/gen/strings_ta.g.dart
+@@ -495,7 +495,8 @@ class _Translations$webSharePage$ta extends Translations$webSharePage$en {
+   @override
+   String pinHint({required Object pin}) => 'PIN "${pin}" ஆகும்';
+   @override
+-  String get encryptionHint => 'Lalitha Local Share ஒரு சுய கையொப்பம் செய்யப்பட்ட சான்றிதழைப் பயன்படுத்துகிறது. உங்களின் உலாவியில் அதை ஏற்க வேண்டும்.';
++  String get encryptionHint =>
++      'Lalitha Local Share ஒரு சுய கையொப்பம் செய்யப்பட்ட சான்றிதழைப் பயன்படுத்துகிறது. உங்களின் உலாவியில் அதை ஏற்க வேண்டும்.';
+   @override
+   String pendingRequests({required Object n}) => 'நிலுவை கோரிக்கைகள்: ${n}';
+ }
+diff --git a/app/lib/gen/strings_uk.g.dart b/app/lib/gen/strings_uk.g.dart
+index addd62d..fdf9297 100644
+--- a/app/lib/gen/strings_uk.g.dart
++++ b/app/lib/gen/strings_uk.g.dart
+@@ -1473,7 +1473,8 @@ class _Translations$dialogs$sendModeHelp$uk extends Translations$dialogs$sendMod
+   @override
+   String get multiple => 'Надсилає файли декільком отримувачам. Вибірку не буде очищено після завершення передачі файлів.';
+   @override
+-  String get link => 'Отримувачі, у яких не встановлено Lalitha Local Share, можуть завантажити вибрані файли, відкривши посилання у своєму браузері.';
++  String get link =>
++      'Отримувачі, у яких не встановлено Lalitha Local Share, можуть завантажити вибрані файли, відкривши посилання у своєму браузері.';
+ }
+ 
+ // Path: dialogs.zoom
+diff --git a/app/lib/gen/strings_uz.g.dart b/app/lib/gen/strings_uz.g.dart
+index 6fc92c7..b0990e5 100644
+--- a/app/lib/gen/strings_uz.g.dart
++++ b/app/lib/gen/strings_uz.g.dart
+@@ -1473,7 +1473,8 @@ class _Translations$dialogs$sendModeHelp$uz extends Translations$dialogs$sendMod
+   @override
+   String get multiple => 'Fayllarni bir nechta qabul qiluvchiga yuboradi. Fayl uzatish tugagandan soʻng tanlov tozalanmaydi.';
+   @override
+-  String get link => 'Lalitha Local Share oʻrnatilmagan qabul qiluvchilar havolani brauzerlarida ochish orqali tanlangan fayllarni yuklab olishlari mumkin.';
++  String get link =>
++      'Lalitha Local Share oʻrnatilmagan qabul qiluvchilar havolani brauzerlarida ochish orqali tanlangan fayllarni yuklab olishlari mumkin.';
+ }
+ 
+ // Path: dialogs.zoom
