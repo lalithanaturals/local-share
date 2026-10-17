@@ -1,0 +1,90 @@
+name: App visual check
+on:
+  push:
+    branches: [app-check]
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v6
+      - name: Read Flutter version
+        run: |
+          echo "FLUTTER_VERSION=$(sed -n 's/.*"flutter": "\(.*\)".*/\1/p' .fvmrc)" >> $GITHUB_ENV
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake libgtk-3-dev ninja-build libayatana-appindicator3-dev xvfb xdotool imagemagick dbus-x11 fonts-noto-color-emoji zbar-tools
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: "stable"
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - name: Rust toolchain
+        working-directory: packages/localsend_isolates
+        run: rustup show
+      - name: Build
+        working-directory: app
+        run: |
+          mkdir -p ../shots
+          flutter pub get
+          dart format lib test > /dev/null; git diff > ../shots/format.diff; git checkout -- lib test
+          flutter analyze > ../shots/analyze.txt 2>&1 || true
+          flutter test test/unit/util/update_checker_test.dart > ../shots/tests.txt 2>&1 || true
+          flutter build linux --release
+      - name: Run app and take screenshots
+        run: |
+          mkdir -p shots
+          export DISPLAY=:99
+          Xvfb :99 -screen 0 1280x800x24 &
+          sleep 3
+          BIN=$(ls app/build/linux/x64/release/bundle/localsend_app)
+          dbus-run-session -- "$BIN" > shots/app-log.txt 2>&1 &
+          sleep 35
+          WID=$(xdotool search --name "Lalitha Local Share" | head -1 || true)
+          echo "window id: $WID" >> shots/info.txt
+          xdotool search --name "." getwindowname %@ >> shots/info.txt 2>&1 || true
+          if [ -n "$WID" ]; then xdotool windowmove $WID 0 0 windowsize $WID 1280 800; xdotool windowactivate $WID || true; fi
+          sleep 4
+          import -window root shots/01-start.png
+          n=2
+          for y in 155 199; do
+            xdotool mousemove 120 $y click 1; sleep 4
+            import -window root shots/0${n}-click-y${y}.png; n=$((n+1))
+          done
+          # Settings tab, scroll to the bottom
+          xdotool mousemove 120 199 click 1; sleep 3
+          xdotool mousemove 770 500; for i in $(seq 1 60); do xdotool click 5; done; sleep 3
+          import -window root shots/06-settings-bottom.png
+          # Updates section: scroll back up a little from the bottom
+          for i in $(seq 1 6); do xdotool click 4; done; sleep 2
+          import -window root shots/06b-settings-updates.png
+          # Receive tab, then the info (About) button top-right
+          xdotool mousemove 120 111 click 1; sleep 3
+          xdotool mousemove 1239 47 click 1; sleep 4
+          import -window root shots/07-about.png
+          # Back to Receive tab, tap Show QR
+          xdotool key Escape; sleep 1
+          xdotool mousemove 120 106 click 1; sleep 3
+          import -window root shots/08-home-button.png
+          xdotool mousemove 768 735 click 1; sleep 8
+          import -window root shots/09-qr-page.png
+          zbarimg -q shots/09-qr-page.png > shots/qr-decoded.txt 2>&1 || true
+          curl -s -m 5 -o shots/web-page.html -w '%{http_code}' "$(sed -n 's/^QR-Code://p' shots/qr-decoded.txt | head -1)" > shots/web-status.txt || true
+          ps aux | grep -c localsend_app >> shots/info.txt
+      - name: Save screenshots to branch
+        if: always()
+        run: |
+          cp -r shots /tmp/shots
+          git config user.name "app-check-bot"
+          git config user.email "app-check-bot@users.noreply.github.com"
+          git checkout --orphan app-check-screens
+          git rm -rf --cached . > /dev/null
+          rm -rf -- * .github .gitignore .fvmrc .gitmodules .nojekyll 2>/dev/null || true
+          cp -r /tmp/shots/* .
+          git add -A
+          git commit -m "screenshots ${GITHUB_SHA::7}"
+          git push -f origin app-check-screens
