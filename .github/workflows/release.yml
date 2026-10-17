@@ -1,0 +1,102 @@
+name: Release new version
+
+# One click: builds Windows, Mac and Android from main and publishes them as a
+# GitHub release named after the version in app/pubspec.yaml. Installed apps
+# check this release and tell users an update is available.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Read version from pubspec.yaml
+        id: get_version
+        run: |
+          VERSION=$(sed -n 's/^version: \([0-9]*\.[0-9]*\.[0-9]*\).*/\1/p' app/pubspec.yaml)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Releasing version $VERSION"
+      - name: Stop if this version was already released
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "v${{ steps.get_version.outputs.version }}" > /dev/null 2>&1; then
+            echo "::error::Version ${{ steps.get_version.outputs.version }} is already released. Increase the version in app/pubspec.yaml first."
+            exit 1
+          fi
+
+  android:
+    needs: version
+    uses: ./.github/workflows/build_android_apk.yml
+    secrets: inherit
+
+  windows:
+    needs: version
+    uses: ./.github/workflows/build_windows_exe_unsigned.yml
+
+  macos:
+    needs: version
+    uses: ./.github/workflows/build_macos_app.yml
+
+  publish:
+    needs: [version, android, windows, macos]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: dl
+
+      - name: Collect files
+        run: |
+          find dl -type f
+          mkdir out
+          cp "$(find dl -name '*Mac*.zip' -o -name '*macOS*.zip' | head -1)" "out/Lalitha-Local-Share-Mac.zip"
+          cp "$(find dl -name '*.exe' | head -1)" "out/Lalitha-Local-Share-Windows-Setup.exe"
+          cp "$(find dl -name '*arm64-v8a*.apk' | head -1)" "out/Lalitha-Local-Share-Android.apk"
+          cp "$(find dl -name '*armeabi-v7a*.apk' | head -1)" "out/Lalitha-Local-Share-Android-older-phones.apk"
+          ls -la out
+
+      - name: Write release notes
+        run: |
+          VERSION="${{ needs.version.outputs.version }}"
+          {
+            echo "## What's new"
+            echo
+            # The section of CHANGELOG.md for this version, without its heading
+            awk -v v="$VERSION" '
+              /^## / { if (found) exit; if (index($0, v)) { found=1; next } }
+              found { print }
+            ' app/assets/CHANGELOG.md
+            echo
+            echo "## Download"
+            echo
+            echo "| Device | File |"
+            echo "|---|---|"
+            echo "| **Windows** | \`Lalitha-Local-Share-Windows-Setup.exe\` |"
+            echo "| **Mac** | \`Lalitha-Local-Share-Mac.zip\` |"
+            echo "| **Android** | \`Lalitha-Local-Share-Android.apk\` (use the \"older-phones\" file only if this one won't install) |"
+            echo "| **iPhone** | No app needed: tap **Show QR** on your computer and scan it with the iPhone camera |"
+            echo
+            echo "These builds are not signed with a paid developer certificate, so Windows and Mac show a one-time warning:"
+            echo "- **Windows:** click *More info → Run anyway*."
+            echo "- **Mac:** unzip, move to Applications, open it, then *System Settings → Privacy & Security → Open Anyway*."
+            echo "- **Android:** allow *Install unknown apps* when asked."
+          } > notes.md
+          cat notes.md
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="${{ needs.version.outputs.version }}"
+          gh release create "v$VERSION" out/* --title "Lalitha Local Share $VERSION" --notes-file notes.md --target "${{ github.sha }}" --latest

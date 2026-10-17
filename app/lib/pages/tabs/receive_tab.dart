@@ -81,7 +81,13 @@ class _ReceiveTabState extends State<ReceiveTab> {
                               return RotatingWidget(
                                 duration: const Duration(seconds: 15),
                                 spinning: serverState != null && animations && activeTab == HomeTab.receive,
-                                child: const LocalSendLogo(withText: false),
+                                // The logo fills its square, so it is drawn at 140 px:
+                                // its corners then stay inside 200 px while it spins.
+                                child: const SizedBox(
+                                  width: 200,
+                                  height: 200,
+                                  child: Center(child: LocalSendLogo(withText: false, size: 140)),
+                                ),
                               );
                             },
                           ),

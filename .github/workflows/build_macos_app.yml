@@ -2,6 +2,7 @@ name: Build macOS app (unsigned)
 
 on:
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: write

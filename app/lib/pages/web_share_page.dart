@@ -186,7 +186,7 @@ class _WebSharePageState extends State<WebSharePage> with Refena {
             return ResponsiveListView(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               children: [
-                if (!_sendMode && networkState.localIps.isNotEmpty) ...[
+                if (networkState.localIps.isNotEmpty) ...[
                   _PhoneQrCard(
                     ips: networkState.localIps,
                     selectedIndex: _qrIpIndex.clamp(0, networkState.localIps.length - 1),

@@ -3,14 +3,15 @@ import 'package:localsend_app/gen/assets.gen.dart';
 
 class LocalSendLogo extends StatelessWidget {
   final bool withText;
+  final double size;
 
-  const LocalSendLogo({required this.withText});
+  const LocalSendLogo({required this.withText, this.size = 200});
 
   @override
   Widget build(BuildContext context) {
     final logo = Assets.img.logo512.image(
-      width: 200,
-      height: 200,
+      width: size,
+      height: size,
     );
 
     if (withText) {

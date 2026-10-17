@@ -1,3 +1,11 @@
+## Lalitha Local Share 1.18.3
+
+- New: big "Show QR" button on the home screen; scan it with a phone to send files to this device
+- New: big QR code when sharing files via link, so phones can download them by scanning
+- New: Settings → Updates shows the version and checks GitHub for a newer version
+- New: the app tells you when a new version is available
+- Fix: the spinning logo no longer overlaps the device name
+
 ## Lalitha Local Share 1.18.2
 
 - Rebranded edition of LocalSend 1.18.2 as Lalitha Local Share (new name, icon and app IDs)

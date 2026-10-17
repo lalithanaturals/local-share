@@ -12,7 +12,7 @@
 #endif
 
 #define MyAppName "Lalitha Local Share"
-#define MyAppVersion "1.18.2"
+#define MyAppVersion "1.18.3"
 #define MyAppPublisher "Lalitha"
 #define MyAppURL "https://github.com/lalithanaturals/local-share"
 #define MyAppExeName "localsend_app.exe"

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:localsend_app/config/theme.dart';
@@ -17,6 +19,8 @@ import 'package:localsend_app/util/native/device_info_helper.dart';
 import 'package:localsend_app/util/native/macos_channel.dart';
 import 'package:localsend_app/util/native/pick_directory_path.dart';
 import 'package:localsend_app/util/native/platform_check.dart';
+import 'package:localsend_app/util/ui/snackbar.dart';
+import 'package:localsend_app/util/update_checker.dart';
 import 'package:localsend_app/widget/custom_dropdown_button.dart';
 import 'package:localsend_app/widget/dialogs/encryption_disabled_notice.dart';
 import 'package:localsend_app/widget/dialogs/pin_dialog.dart';
@@ -524,6 +528,14 @@ class SettingsTab extends StatelessWidget {
               ],
             ),
             _SettingsSection(
+              title: 'Updates',
+              children: [
+                _UpdateEntry(
+                  version: ref.watch(versionProvider).maybeWhen(data: (version) => version.version, orElse: () => '...'),
+                ),
+              ],
+            ),
+            _SettingsSection(
               title: t.settingsTab.other.title,
               padding: const EdgeInsets.only(bottom: 0),
               children: [
@@ -684,6 +696,56 @@ class _BooleanEntry extends StatelessWidget {
 }
 
 /// A specialized version of [_SettingsEntry].
+/// Shows the installed version and lets the user check GitHub for a newer one.
+class _UpdateEntry extends StatefulWidget {
+  final String version;
+
+  const _UpdateEntry({required this.version});
+
+  @override
+  State<_UpdateEntry> createState() => _UpdateEntryState();
+}
+
+class _UpdateEntryState extends State<_UpdateEntry> {
+  bool _checking = false;
+
+  Future<void> _check() async {
+    setState(() => _checking = true);
+    try {
+      final update = await fetchAppUpdate();
+      if (!mounted) {
+        return;
+      }
+      if (update == null) {
+        context.showSnackBar('You have the latest version (${widget.version}).');
+      } else {
+        await showUpdateDialog(context, update);
+      }
+    } catch (_) {
+      if (mounted) {
+        context.showSnackBar('Could not check for updates. Please check your internet connection.');
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _checking = false);
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _ButtonEntry(
+      label: 'Version ${widget.version}',
+      buttonLabel: _checking ? 'Checking...' : 'Check for updates',
+      onTap: () {
+        if (!_checking) {
+          unawaited(_check());
+        }
+      },
+    );
+  }
+}
+
 class _ButtonEntry extends StatelessWidget {
   final String label;
   final String buttonLabel;
