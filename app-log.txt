@@ -1,0 +1,31 @@
+
+(com.lalitha.localshare:10362): dbind-WARNING **: 07:20:02.862: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files
+
+(com.lalitha.localshare:10362): Atk-CRITICAL **: 07:20:03.230: atk_socket_embed: assertion 'plug_id != NULL' failed
+dynamic_color: Accent color detected.
+2026-10-18 07:20:04.523525    [INFO] [PersistenceService] Existing version: null
+2026-10-18 07:20:04.957273    [INFO] [TrayHelper] Using "assets/img/logo-32-white.png" as path of system tray icon
+2026-10-18 07:20:05.015043    [INFO] [ChildIsolateMain] Child isolate is ready: DiscoveryIsolate (logLevel: INFO)
+2026-10-18 07:20:05.016566    [INFO] [ChildIsolateMain] Child isolate is ready: HttpUploadIsolate (logLevel: INFO)
+2026-10-18 07:20:05.017850    [INFO] [ChildIsolateMain] Child isolate is ready: HttpServerIsolate (logLevel: INFO)
+2026-10-18 07:20:05.243381    [INFO] [Server] Starting server...
+2026-10-18 07:20:05.255112    [INFO] [Server] Server started. (Port: 53317, HTTPS only)
+2026-10-18 07:20:05.259870 [WARNING] [NetworkInfo] Failed to get wifi IP
+org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.NetworkManager was not provided by any .service files
+[ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.NetworkManager was not provided by any .service files
+#0      DBusClient._callMethod (package:dbus/src/dbus_client.dart:1142)
+<asynchronous suspension>
+#1      DBusClient.callMethod (package:dbus/src/dbus_client.dart:625)
+<asynchronous suspension>
+#2      DBusRemoteObjectManager.getManagedObjects (package:dbus/src/dbus_remote_object_manager.dart:85)
+<asynchronous suspension>
+#3      NetworkManagerClient.connect (package:nm/src/network_manager_client.dart:2351)
+<asynchronous suspension>
+#4      ConnectivityPlusLinuxPlugin._startListenConnectivity (package:connectivity_plus/src/connectivity_plus_linux.dart:77)
+<asynchronous suspension>
+
+2026-10-18 07:20:05.264045    [INFO] [NetworkInfo] Network state: [10.1.0.176, 172.17.0.1]
+2026-10-18 07:21:24.559396    [INFO] [Server] Stopping server...
+2026-10-18 07:21:24.561648    [INFO] [Server] Server stopped.
+2026-10-18 07:21:24.561683    [INFO] [Server] Starting server...
+2026-10-18 07:21:24.594649    [INFO] [Server] Server started. (Port: 53317, HTTP only)
