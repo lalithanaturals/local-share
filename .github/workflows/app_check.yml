@@ -63,7 +63,7 @@ jobs:
           for i in $(seq 1 6); do xdotool click 4; done; sleep 2
           import -window root shots/06b-settings-updates.png
           # Click "Get the app" (second row of the App section), capture, scan the QR, go back
-          xdotool mousemove 964 489 click 1; sleep 4
+          xdotool mousemove 964 436 click 1; sleep 4
           import -window root shots/06c-get-the-app.png
           zbarimg -q shots/06c-get-the-app.png > shots/qr-download-page.txt 2>&1 || true
           xdotool mousemove 28 28 click 1; sleep 3
