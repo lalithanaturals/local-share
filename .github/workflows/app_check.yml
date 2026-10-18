@@ -62,6 +62,11 @@ jobs:
           # Updates section: scroll back up a little from the bottom
           for i in $(seq 1 6); do xdotool click 4; done; sleep 2
           import -window root shots/06b-settings-updates.png
+          # Click "Get the app" (second row of the App section), capture, scan the QR, go back
+          xdotool mousemove 964 489 click 1; sleep 4
+          import -window root shots/06c-get-the-app.png
+          zbarimg -q shots/06c-get-the-app.png > shots/qr-download-page.txt 2>&1 || true
+          xdotool mousemove 28 28 click 1; sleep 3
           # Receive tab, then the info (About) button top-right
           xdotool mousemove 120 111 click 1; sleep 3
           xdotool mousemove 1239 47 click 1; sleep 4
