@@ -4,6 +4,10 @@
 - New: big QR code when sharing files via link, so phones can download them by scanning
 - New: Settings → Updates shows the version and checks GitHub for a newer version
 - New: the app tells you when a new version is available
+- New: big "Send via QR" button on the Send screen
+- New: Settings → App → "Get the app" with downloads for Android, Windows and Mac, plus a QR code of the download page
+- New: download page at https://lalithanaturals.github.io/local-share/
+- New: "Get the app" link on the web pages phones see after scanning a QR code
 - Fix: the spinning logo no longer overlaps the device name
 
 ## Lalitha Local Share 1.18.2

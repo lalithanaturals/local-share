@@ -7,6 +7,7 @@ import 'package:localsend_app/gen/strings.g.dart';
 import 'package:localsend_app/model/persistence/color_mode.dart';
 import 'package:localsend_app/pages/about/about_page.dart';
 import 'package:localsend_app/pages/changelog_page.dart';
+import 'package:localsend_app/pages/download_apps_page.dart';
 import 'package:localsend_app/pages/settings/network_interfaces_page.dart';
 import 'package:localsend_app/pages/tabs/settings_tab_controller.dart';
 import 'package:localsend_app/provider/network/server/server_provider.dart';
@@ -528,10 +529,17 @@ class SettingsTab extends StatelessWidget {
               ],
             ),
             _SettingsSection(
-              title: 'Updates',
+              title: 'App',
               children: [
                 _UpdateEntry(
                   version: ref.watch(versionProvider).maybeWhen(data: (version) => version.version, orElse: () => '...'),
+                ),
+                _ButtonEntry(
+                  label: 'Install on other devices',
+                  buttonLabel: 'Get the app',
+                  onTap: () async {
+                    await context.push(() => const DownloadAppsPage());
+                  },
                 ),
               ],
             ),
